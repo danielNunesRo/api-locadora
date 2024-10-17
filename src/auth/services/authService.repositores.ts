@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { DatabaseService } from "src/database/database.service";
 import { CreateUsuarioInputDto } from "./dto/createUser.dto";
+import { User } from "./auth.service";
 
 @Injectable()
 export class AuthRepository {
@@ -21,6 +22,17 @@ export class AuthRepository {
 
         await this.db.query(sql, binds);
 
+    }
+
+    async findByEmail(email: string): Promise<User> {
+        const sql = `
+            SELECT id, nome, email, senha FROM allusers WHERE email = :email
+        `
+
+        const binds = { email }
+
+        const users = await this.db.query<User>(sql, binds);
+        return users[0];
     }
 
 }
