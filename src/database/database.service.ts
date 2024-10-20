@@ -33,6 +33,8 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
                 { outFormat: oracledb.OUT_FORMAT_OBJECT, autoCommit: true }
             );
 
+            console.log(result.rows);
+
             return result.rows as T[];
         } catch (error) {
             console.error("Erro ao executar a query: ", error);

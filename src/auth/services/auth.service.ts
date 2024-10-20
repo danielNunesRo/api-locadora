@@ -49,7 +49,10 @@ export class AuthService {
             throw new BadRequestException('Senha incorreta'); 
         }
 
-        const payload = { email: user.EMAIL, sub: user.ID }; 
+
+        const payload = { sub: user.ID, email: user.EMAIL, role: user.ROLE }; 
+
+        
         return {
             access_token: this.jwtService.sign(payload), 
         };

@@ -26,7 +26,7 @@ export class AuthRepository {
 
     async findByEmail(email: string): Promise<User> {
         const sql = `
-            SELECT id, nome, email, senha FROM allusers WHERE email = :email
+            SELECT id, nome, email, senha, role FROM allusers WHERE email = :email
         `
 
         const binds = { email }
