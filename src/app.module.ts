@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { JwtStrategy } from './auth/services/strategyJwt';
 import { PassportModule } from '@nestjs/passport';
 import { MoviesModule } from './movies/movies.module';
+import { RentalsModule } from './rentals/rentals.module';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { MoviesModule } from './movies/movies.module';
     DatabaseModule, 
     AuthModule, 
     UsersModule, 
-    PassportModule, MoviesModule,
+    PassportModule, MoviesModule, RentalsModule,
   ],
   controllers: [],
   providers: [JwtStrategy],

@@ -5,7 +5,9 @@ import { Roles } from "src/auth/services/roles.decorator";
 import { RolesGuard } from "src/auth/services/rolesGuard.service";
 import { GetUsersByIdService } from "../service/getUsersById/service/getUsersById.service";
 import { GetUsersByIdDtoInput } from "../service/getUsersById/dto/getUsersByIdInput.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags('users')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('/users')
 export class UserController {
