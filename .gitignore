@@ -1,3 +1,6 @@
+# config cloud
+/config/
+
 # compiled output
 /dist
 /node_modules

@@ -18,6 +18,7 @@ export class GetMoviesRepository {
 
          return await this.db.query(sql);
 
+         
     }
 
 }
