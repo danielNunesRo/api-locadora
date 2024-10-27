@@ -8,6 +8,8 @@ import { GetMoviesByNameRepository } from "./getMoviesByName/repositories/getMov
 import { PostMovieService } from "./postMovie/service/postMovie.service";
 import { PostMovieRepository } from "./postMovie/repositories/postMovie.repository";
 import { ConfigModule } from "@nestjs/config";
+import { DeleteMovieByIdService } from "./deleteMovieById/service/deleteMovieById.service";
+import { DeleteMovieByIdRepository } from "./deleteMovieById/repositories/deleteMovieById.repository";
 
 
 @Module({
@@ -18,7 +20,9 @@ import { ConfigModule } from "@nestjs/config";
                 getMoviesByNameService, 
                 GetMoviesByNameRepository,
                 PostMovieService,
-                PostMovieRepository ],
+                PostMovieRepository,
+                DeleteMovieByIdService,
+                DeleteMovieByIdRepository ],
 })
 
 export class moviesServiceModule {}

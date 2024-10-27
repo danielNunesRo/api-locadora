@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Post, Put, Query, Request, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from "@nestjs/swagger";
 import { GetMoviesService } from "../services/getMovies/service/getMovies.service";
 import { GetMoviesOutputDto } from "../services/getMovies/dto/getMoviesOutput.dto";
@@ -11,6 +11,8 @@ import { PostMovieService } from "../services/postMovie/service/postMovie.servic
 import { PostMovieInputDto } from "../services/postMovie/dto/postMovieInput.dto";
 import { Express } from "express";
 import { FileInterceptor } from "@nestjs/platform-express";
+import { DeleteMoviesByIdInputDto } from "../services/deleteMovieById/dto/deleteMoviesByIdInput.dto";
+import { DeleteMovieByIdService } from "../services/deleteMovieById/service/deleteMovieById.service";
 
 
 
@@ -21,7 +23,8 @@ export class MoviesController {
 
     constructor(private readonly getMoviesService: GetMoviesService,
                 private readonly getMoviesByNameService: getMoviesByNameService,
-                private readonly postMovieService: PostMovieService
+                private readonly postMovieService: PostMovieService,
+                private readonly deleteMovieByIdService: DeleteMovieByIdService
     ) {}
 
     
@@ -48,6 +51,16 @@ export class MoviesController {
         };
 
         return await this.postMovieService.execute(movieData);
+    }
+
+    @Put()
+    async deleteMovieById(@Query() dto: DeleteMoviesByIdInputDto, @Request() req) {
+        
+        const id_usuario = req.user.id;
+        dto.id_usuario = id_usuario;
+
+        return await this.deleteMovieByIdService.execute(dto);
+
     }
 
    
